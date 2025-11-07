@@ -77,12 +77,12 @@ export default function Services() {
         rel="stylesheet"
       />
 
-      <section className="py-16 md:py-24 px-6 bg-[#F8F9FA] dark:bg-[#111111]">
+      <section className="py-16 md:py-24 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           {/* Section heading */}
           <div className="text-center mb-12 md:mb-16">
             <h2
-              className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-black dark:text-white mb-6"
+              className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-white mb-6"
               style={{
                 fontFamily: "Inter, system-ui, sans-serif",
                 fontWeight: "700",
@@ -94,7 +94,7 @@ export default function Services() {
 
             {/* Sub-headline */}
             <p
-              className="text-lg md:text-xl text-[#555555] dark:text-[#B0B0B0] max-w-[60ch] mx-auto"
+              className="text-lg md:text-xl text-white/60 max-w-[60ch] mx-auto"
               style={{
                 fontFamily: "Inter, system-ui, sans-serif",
               }}
@@ -119,7 +119,7 @@ export default function Services() {
                     ${
                       active
                         ? "bg-[#6C5CE7] border-transparent transform scale-105"
-                        : "bg-white dark:bg-[#1A1A1A] border-[#E8E7E4] dark:border-[#333333] hover:bg-gray-50 dark:hover:bg-[#242424] hover:border-[#6C5CE7]/20"
+                        : "bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 hover:border-white/20"
                     }
                   `}
                   onMouseEnter={() => setHoveredCard(service.id)}
@@ -132,7 +132,7 @@ export default function Services() {
                       ${
                         active
                           ? "bg-white/20 border-white/30"
-                          : "bg-[#F8F9FA] dark:bg-[#2A2A2A] border-[#E8E7E4] dark:border-[#404040] group-hover:bg-[#6C5CE7]/10 group-hover:border-[#6C5CE7]/20"
+                          : "bg-white/10 border-white/20 group-hover:bg-[#6C5CE7]/10 group-hover:border-[#6C5CE7]/20"
                       }
                     `}
                   >
@@ -151,7 +151,7 @@ export default function Services() {
                   <h3
                     className={`
                       text-xl mb-3 transition-all duration-200 ease-out font-semibold
-                      ${active ? "text-white" : "text-black dark:text-white"}
+                      ${active ? "text-white" : "text-white"}
                     `}
                     style={{
                       fontFamily: "Inter, system-ui, sans-serif",
@@ -164,7 +164,7 @@ export default function Services() {
                   <p
                     className={`
                       text-base leading-relaxed transition-all duration-200 ease-out mb-4
-                      ${active ? "text-white/90" : "text-[#666666] dark:text-[#B0B0B0]"}
+                      ${active ? "text-white/90" : "text-white/60"}
                     `}
                     style={{
                       fontFamily: "Inter, system-ui, sans-serif",
@@ -196,9 +196,9 @@ export default function Services() {
           <div className="text-center mt-12">
             <a
               href="/services"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-[#1A1A1A] border border-[#E0E0E0] dark:border-[#333333] rounded-2xl hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
             >
-              <span className="text-[#0D0D0D] dark:text-white font-semibold text-lg">
+              <span className="text-white font-semibold text-lg">
                 View All Services
               </span>
               <ArrowRight

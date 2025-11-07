@@ -31,7 +31,7 @@ export default function Footer() {
       />
 
       <footer
-        className="bg-[#F8F9FA] dark:bg-[#111111] border-t border-[#E5E5E5] dark:border-[#333333] py-16 px-6"
+        className="bg-[#0A0A0A] border-t border-white/10 py-16 px-6"
         style={{ fontFamily: "Inter, system-ui, sans-serif" }}
       >
         <div className="max-w-[1280px] mx-auto">

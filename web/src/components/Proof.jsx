@@ -36,7 +36,7 @@ export default function Proof() {
         rel="stylesheet"
       />
 
-      <section className="py-16 md:py-24 px-6 bg-white dark:bg-[#0B0B10]">
+      <section className="py-16 md:py-24 px-6 bg-[#0F0F0F]">
         <div className="max-w-[1200px] mx-auto">
           {/* Section heading */}
           <div className="text-center mb-12 md:mb-16">
