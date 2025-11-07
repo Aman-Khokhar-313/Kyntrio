@@ -77,6 +77,7 @@ if (process.env.AUTH_SECRET) {
     '*',
     initAuthConfig((c) => ({
       secret: c.env.AUTH_SECRET,
+      basePath: '/api/auth',
       pages: {
         signIn: '/account/signin',
         signOut: '/account/logout',
@@ -86,7 +87,7 @@ if (process.env.AUTH_SECRET) {
         strategy: 'jwt',
       },
       callbacks: {
-        session({ session, token }) {
+        session({ session, token}) {
           if (token.sub) {
             session.user.id = token.sub;
           }
@@ -227,12 +228,7 @@ app.all('/integrations/:path{.+}', async (c, next) => {
   });
 });
 
-app.use('/api/auth/*', async (c, next) => {
-  if (isAuthAction(c.req.path)) {
-    return authHandler()(c, next);
-  }
-  return next();
-});
+app.use('/api/auth/*', authHandler());
 app.route(API_BASENAME, api);
 
 export default await createHonoServer({
