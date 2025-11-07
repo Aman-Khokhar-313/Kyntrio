@@ -94,7 +94,10 @@ export default function Header() {
 
                 {/* Mega Menu Dropdown */}
                 {item.hasDropdown && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-4 w-[750px] bg-[#0F0F0F] rounded-2xl shadow-2xl border border-[#252525] overflow-hidden z-50">
+                  <>
+                    {/* Invisible bridge to prevent dropdown from closing */}
+                    <div className="absolute top-full left-0 w-full h-2" />
+                    <div className="absolute top-full left-0 mt-2 w-[750px] bg-[#0F0F0F] rounded-2xl shadow-2xl border border-[#252525] overflow-hidden z-50">
                     <div className="grid grid-cols-[200px_200px_1fr] p-6 gap-6">
                       {/* Explore Column */}
                       <div>
@@ -169,7 +172,8 @@ export default function Header() {
                         ))}
                       </div>
                     </div>
-                  </div>
+                    </div>
+                  </>
                 )}
               </div>
             ))}
