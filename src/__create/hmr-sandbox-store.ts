@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { useState, useCallback } from 'react';
 
 export type SandboxStatus =
 	| 'idle'
@@ -25,23 +25,40 @@ interface SandboxState {
 	resetToIdle: () => void;
 }
 
-export const useSandboxStore = create<SandboxState>((set, get) => ({
-	status: 'idle',
-	isGenerating: false,
-	hasError: false,
+// Simple implementation without zustand
+let globalStatus: SandboxStatus = 'idle';
+const listeners = new Set<() => void>();
 
-	setStatus: (status) =>
-		set({
-			status,
-			isGenerating:
-				status === 'codegen-started' || status === 'codegen-generating',
-			hasError: status === 'codegen-error',
-		}),
+const getState = (): { status: SandboxStatus; isGenerating: boolean; hasError: boolean } => ({
+	status: globalStatus,
+	isGenerating: globalStatus === 'codegen-started' || globalStatus === 'codegen-generating',
+	hasError: globalStatus === 'codegen-error',
+});
 
-	startCodeGen: () => get().setStatus('codegen-started'),
-	setCodeGenGenerating: () => get().setStatus('codegen-generating'),
-	completeCodeGen: () => get().setStatus('codegen-complete'),
-	errorCodeGen: () => get().setStatus('codegen-error'),
-	stopCodeGen: () => get().setStatus('codegen-stopped'),
-	resetToIdle: () => get().setStatus('idle'),
-}));
+const setStatus = (status: SandboxStatus) => {
+	globalStatus = status;
+	listeners.forEach(listener => listener());
+};
+
+export const useSandboxStore = (): SandboxState => {
+	const [, forceUpdate] = useState({});
+
+	const trigger = useCallback(() => forceUpdate({}), []);
+
+	if (typeof window !== 'undefined') {
+		listeners.add(trigger);
+	}
+
+	const state = getState();
+
+	return {
+		...state,
+		setStatus,
+		startCodeGen: () => setStatus('codegen-started'),
+		setCodeGenGenerating: () => setStatus('codegen-generating'),
+		completeCodeGen: () => setStatus('codegen-complete'),
+		errorCodeGen: () => setStatus('codegen-error'),
+		stopCodeGen: () => setStatus('codegen-stopped'),
+		resetToIdle: () => setStatus('idle'),
+	};
+};
