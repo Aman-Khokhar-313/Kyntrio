@@ -47,7 +47,7 @@ export default function Footer() {
                   className="text-[#111111] dark:text-white text-xl font-bold"
                   style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                 >
-                  NeuraWeb Labs
+                  NEAHXp
                 </span>
               </div>
 
@@ -132,7 +132,7 @@ export default function Footer() {
               className="text-[#666666] dark:text-[#B0B0B0] text-sm order-2 md:order-1"
               style={{ fontFamily: "Inter, system-ui, sans-serif" }}
             >
-              © 2025 NeuraWeb Labs. All rights reserved.
+              © 2025 NEAHXp. All rights reserved.
             </div>
 
             {/* Legal Links */}

@@ -49,7 +49,7 @@ export default function Header() {
               <span className="text-white font-bold text-sm">N</span>
             </div>
             <span className="text-white font-bold text-lg">
-              NeuraWeb Labs
+              NEAHXp
             </span>
           </div>
 
@@ -164,7 +164,7 @@ export default function Header() {
                   <span className="text-white font-bold text-sm">N</span>
                 </div>
                 <span className="text-white font-bold text-lg">
-                  NeuraWeb Labs
+                  NEAHXp
                 </span>
               </div>
               <button
