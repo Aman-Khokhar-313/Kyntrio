@@ -22,10 +22,7 @@ import {
 import './global.css';
 
 import fetch from '@/__create/fetch';
-// @ts-ignore
-import { SessionProvider } from '@auth/create/react';
 import { useNavigate } from 'react-router';
-import { serializeError } from 'serialize-error';
 import { Toaster } from 'sonner';
 // @ts-ignore
 import { LoadFonts } from 'virtual:load-fonts.jsx';
@@ -113,7 +110,10 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
         window.parent.postMessage(
           {
             type: 'sandbox:web:fix',
-            error: serializeError(error),
+            error: {
+              message: error?.toString(),
+              stack: (error as Error)?.stack
+            },
           },
           '*'
         );
@@ -126,7 +126,10 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
   const { buttonProps: copyButtonProps } = useButton(
     {
       onPress: useCallback(() => {
-        navigator.clipboard.writeText(JSON.stringify(serializeError(error)));
+        navigator.clipboard.writeText(JSON.stringify({
+          message: error?.toString(),
+          stack: (error as Error)?.stack
+        }));
       }, [error]),
     },
     useRef<HTMLButtonElement>(null)
@@ -388,9 +391,5 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
-  return (
-    <SessionProvider basePath="/api/auth">
-      <Outlet />
-    </SessionProvider>
-  );
+  return <Outlet />;
 }
