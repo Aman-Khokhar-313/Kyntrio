@@ -188,7 +188,7 @@ export default function AIMLPage() {
                     <div className="text-black dark:text-white font-medium">Model accuracy achieved</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold text-[#22C55E] mb-2">$1999+</div>
+                    <div className="text-4xl font-bold text-[#22C55E] mb-2">₹69,999+</div>
                     <div className="text-black dark:text-white font-medium">Starting investment</div>
                   </div>
                 </div>

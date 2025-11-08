@@ -4,7 +4,7 @@ export default function PricingTable() {
   const plans = [
     {
       name: "Audit",
-      price: "$49",
+      price: "₹4,999",
       period: "one-time",
       description: "Perfect for getting started",
       features: [
@@ -21,7 +21,7 @@ export default function PricingTable() {
     },
     {
       name: "Growth",
-      price: "$99",
+      price: "₹12,999",
       period: "per month",
       description: "Best for growing businesses",
       features: [
@@ -39,7 +39,7 @@ export default function PricingTable() {
     },
     {
       name: "Custom",
-      price: "$199",
+      price: "₹24,999",
       period: "per month",
       description: "For enterprise needs",
       features: [

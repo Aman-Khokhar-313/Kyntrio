@@ -31,7 +31,7 @@ export default function ResultsBanner() {
     },
     {
       icon: Users,
-      value: "$200k+",
+      value: "₹50L+",
       label: "Extra Revenue",
       trend: "↑",
       color: "from-[#F59E0B] to-[#D97706]",

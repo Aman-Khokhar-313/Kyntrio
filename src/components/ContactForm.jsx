@@ -14,7 +14,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const budgetOptions = ["<$1k", "$1k–$3k", "$3k–$10k", "$10k+"];
+  const budgetOptions = ["<₹20k", "₹20k–₹50k", "₹50k–₹1L", "₹1L+"];
   const serviceOptions = [
     "Digital Marketing",
     "Software Development",

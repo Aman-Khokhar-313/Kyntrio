@@ -88,11 +88,11 @@ export default function QuoteWizard() {
   ];
 
   const budgetOptions = [
-    "Under $5k",
-    "$5k - $15k",
-    "$15k - $50k",
-    "$50k - $100k",
-    "$100k+",
+    "Under ₹20k",
+    "₹20k - ₹50k",
+    "₹50k - ₹1L",
+    "₹1L+",
+    "Not sure yet",
   ];
 
   const serviceOptions = [

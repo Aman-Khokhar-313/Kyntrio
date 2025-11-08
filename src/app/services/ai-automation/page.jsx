@@ -56,7 +56,7 @@ export default function AIAutomationPage() {
   const pricing = {
     starter: {
       name: "Starter",
-      price: "$999",
+      price: "₹19,999",
       features: [
         "Up to 5 automation workflows",
         "Basic CRM integration",
@@ -66,7 +66,7 @@ export default function AIAutomationPage() {
     },
     professional: {
       name: "Professional",
-      price: "$2,499",
+      price: "₹49,999",
       features: [
         "Unlimited workflows",
         "Advanced AI models",
