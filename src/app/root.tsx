@@ -31,7 +31,7 @@ import type { Route } from './+types/root';
 
 export const links = () => [];
 
-if (globalThis.window && globalThis.window !== undefined) {
+if (typeof window !== 'undefined' && globalThis.window) {
   globalThis.window.fetch = fetch;
 }
 
@@ -92,36 +92,43 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
   }, []);
 
   const handleShowLogs = useCallback(() => {
-    window.parent.postMessage(
-      {
-        type: 'sandbox:web:show-logs',
-      },
-      '*'
-    );
+    if (typeof window !== 'undefined') {
+      window.parent.postMessage(
+        {
+          type: 'sandbox:web:show-logs',
+        },
+        '*'
+      );
+    }
   }, []);
 
   const handleFix = useCallback(() => {
-    window.parent.postMessage(
-      {
-        type: 'sandbox:web:fix',
-        error: {
-          message: error?.toString(),
-          stack: (error as Error)?.stack
+    if (typeof window !== 'undefined') {
+      window.parent.postMessage(
+        {
+          type: 'sandbox:web:fix',
+          error: {
+            message: error?.toString(),
+            stack: (error as Error)?.stack
+          },
         },
-      },
-      '*'
-    );
-    setIsOpen(false);
+        '*'
+      );
+      setIsOpen(false);
+    }
   }, [error]);
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(JSON.stringify({
-      message: error?.toString(),
-      stack: (error as Error)?.stack
-    }));
+    if (typeof window !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(JSON.stringify({
+        message: error?.toString(),
+        stack: (error as Error)?.stack
+      }));
+    }
   }, [error]);
 
   function isInIframe() {
+    if (typeof window === 'undefined') return false;
     try {
       return window.parent !== window;
     } catch {
@@ -331,6 +338,8 @@ export function Layout({ children }: { children: ReactNode }) {
   const location = useLocation();
   const pathname = location?.pathname;
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleMessage = (event: MessageEvent) => {
       if (event.data.type === 'sandbox:navigation') {
         navigate(event.data.pathname);
@@ -344,15 +353,15 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [navigate]);
 
   useEffect(() => {
-    if (pathname) {
-      window.parent.postMessage(
-        {
-          type: 'sandbox:web:navigation',
-          pathname,
-        },
-        '*'
-      );
-    }
+    if (typeof window === 'undefined' || !pathname) return;
+    
+    window.parent.postMessage(
+      {
+        type: 'sandbox:web:navigation',
+        pathname,
+      },
+      '*'
+    );
   }, [pathname]);
   return (
     <html lang="en">

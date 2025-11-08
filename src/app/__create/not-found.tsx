@@ -4,7 +4,19 @@ import { useNavigate } from 'react-router';
 import { useCallback, useEffect, useState } from 'react';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const matches = await fg('src/**/page.{js,jsx,ts,tsx}');
+  // Only run file system operations in development, not during build/prerender
+  let matches: string[] = [];
+  
+  try {
+    // Guard against prerender/build time when fs operations might fail
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      matches = await fg('src/**/page.{js,jsx,ts,tsx}');
+    }
+  } catch (error) {
+    console.warn('Could not scan for pages:', error);
+    matches = [];
+  }
+  
   return {
     path: `/${params['*']}`,
     pages: matches
@@ -77,14 +89,16 @@ export default function CreateDefaultNotFoundPage({
   };
 
   const handleCreatePage = useCallback(() => {
-    window.parent.postMessage(
-      {
-        type: 'sandbox:web:create',
-        path: missingPath,
-        view: 'web',
-      },
-      '*'
-    );
+    if (typeof window !== 'undefined') {
+      window.parent.postMessage(
+        {
+          type: 'sandbox:web:create',
+          path: missingPath,
+          view: 'web',
+        },
+        '*'
+      );
+    }
   }, [missingPath]);
 
   return (
