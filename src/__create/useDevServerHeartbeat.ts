@@ -3,15 +3,15 @@
 import { useIdleTimer } from 'react-idle-timer';
 
 export function useDevServerHeartbeat() {
-  // Only run in development mode
-  if (process.env.NODE_ENV !== 'development') {
-    return;
-  }
-
+  const isDev = typeof process !== 'undefined' && process.env.NODE_ENV === 'development';
+  
   useIdleTimer({
     throttle: 60_000 * 3,
     timeout: 60_000,
+    disabled: !isDev,
     onAction: () => {
+      if (!isDev) return;
+      
       // HACK: at time of writing, we run the dev server on a proxy url that
       // when requested, ensures that the dev server's life is extended. If
       // the user is using a page or is active in it in the app, but when the
