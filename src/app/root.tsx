@@ -9,7 +9,6 @@ import {
   useRouteError,
 } from 'react-router';
 
-import { useButton } from '@react-aria/button';
 import {
   useCallback,
   useEffect,
@@ -91,49 +90,36 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
     const animateTimer = setTimeout(() => setIsOpen(true), 100);
     return () => clearTimeout(animateTimer);
   }, []);
-  const { buttonProps: showLogsButtonProps } = useButton(
-    {
-      onPress: useCallback(() => {
-        window.parent.postMessage(
-          {
-            type: 'sandbox:web:show-logs',
-          },
-          '*'
-        );
-      }, []),
-    },
-    useRef<HTMLButtonElement>(null)
-  );
-  const { buttonProps: fixButtonProps } = useButton(
-    {
-      onPress: useCallback(() => {
-        window.parent.postMessage(
-          {
-            type: 'sandbox:web:fix',
-            error: {
-              message: error?.toString(),
-              stack: (error as Error)?.stack
-            },
-          },
-          '*'
-        );
-        setIsOpen(false);
-      }, [error]),
-      isDisabled: !error,
-    },
-    useRef<HTMLButtonElement>(null)
-  );
-  const { buttonProps: copyButtonProps } = useButton(
-    {
-      onPress: useCallback(() => {
-        navigator.clipboard.writeText(JSON.stringify({
+
+  const handleShowLogs = useCallback(() => {
+    window.parent.postMessage(
+      {
+        type: 'sandbox:web:show-logs',
+      },
+      '*'
+    );
+  }, []);
+
+  const handleFix = useCallback(() => {
+    window.parent.postMessage(
+      {
+        type: 'sandbox:web:fix',
+        error: {
           message: error?.toString(),
           stack: (error as Error)?.stack
-        }));
-      }, [error]),
-    },
-    useRef<HTMLButtonElement>(null)
-  );
+        },
+      },
+      '*'
+    );
+    setIsOpen(false);
+  }, [error]);
+
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(JSON.stringify({
+      message: error?.toString(),
+      stack: (error as Error)?.stack
+    }));
+  }, [error]);
 
   function isInIframe() {
     try {
@@ -150,7 +136,8 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
             <button
               className="flex flex-row items-center justify-center gap-[4px] outline-none transition-colors rounded-[8px] border-[1px] bg-[#f9f9f9] hover:bg-[#dbdbdb] active:bg-[#c4c4c4] border-[#c4c4c4] text-[#18191B] text-sm px-[8px] py-[4px] cursor-pointer"
               type="button"
-              {...fixButtonProps}
+              onClick={handleFix}
+              disabled={!error}
             >
               Try to fix
             </button>
@@ -159,7 +146,7 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
           <button
             className="flex flex-row items-center justify-center gap-[4px] outline-none transition-colors rounded-[8px] border-[1px] bg-[#2C2D2F] hover:bg-[#414243] active:bg-[#555658] border-[#414243] text-white text-sm px-[8px] py-[4px]"
             type="button"
-            {...showLogsButtonProps}
+            onClick={handleShowLogs}
           >
             Show logs
           </button>
@@ -168,7 +155,7 @@ function InternalErrorBoundary({ error: errorArg }: Route.ErrorBoundaryProps) {
         <button
           className="flex flex-row items-center justify-center gap-[4px] outline-none transition-colors rounded-[8px] border-[1px] bg-[#2C2D2F] hover:bg-[#414243] active:bg-[#555658] border-[#414243] text-white text-sm px-[8px] py-[4px] w-fit"
           type="button"
-          {...copyButtonProps}
+          onClick={handleCopy}
         >
           Copy error
         </button>
