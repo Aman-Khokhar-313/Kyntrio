@@ -117,7 +117,7 @@ export default function ContactForm() {
         </p>
         <button
           onClick={() => setSubmitStatus(null)}
-          className="px-6 py-3 bg-[#6C5CE7] hover:bg-[#5B4BD6] text-white font-medium rounded-xl transition-colors duration-200"
+          className="px-6 py-3 bg-[#22C55E] hover:bg-[#16A34A] text-white font-medium rounded-xl transition-colors duration-200"
         >
           Send Another Message
         </button>
@@ -143,7 +143,7 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl text-[#111111] dark:text-white placeholder-[#666666] dark:placeholder-[#B0B0B0] focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
+            className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl text-[#111111] dark:text-white placeholder-[#666666] dark:placeholder-[#B0B0B0] focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent"
             placeholder="Your full name"
           />
         </div>
@@ -161,7 +161,7 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl text-[#111111] dark:text-white placeholder-[#666666] dark:placeholder-[#B0B0B0] focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
+            className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl text-[#111111] dark:text-white placeholder-[#666666] dark:placeholder-[#B0B0B0] focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent"
             placeholder="your@email.com"
           />
         </div>
@@ -220,13 +220,13 @@ export default function ContactForm() {
           {serviceOptions.map((service) => (
             <label
               key={service}
-              className="flex items-center gap-3 p-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+              className="flex items-center gap-3 p-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
             >
               <input
                 type="checkbox"
                 checked={formData.services.includes(service)}
                 onChange={() => handleServiceChange(service)}
-                className="w-4 h-4 text-[#6C5CE7] border-[#E5E5E5] dark:border-[#333333] rounded focus:ring-[#6C5CE7] focus:ring-2"
+                className="w-4 h-4 text-[#22C55E] border-[#E5E5E5] dark:border-[#333333] rounded focus:ring-[#22C55E] focus:ring-2"
               />
               <span className="text-sm text-[#111111] dark:text-white">
                 {service}
@@ -278,7 +278,7 @@ export default function ContactForm() {
             />
             <label
               htmlFor="attachment"
-              className="flex items-center justify-center gap-3 p-6 bg-white dark:bg-[#1A1A1A] border-2 border-dashed border-[#E5E5E5] dark:border-[#333333] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+              className="flex items-center justify-center gap-3 p-6 bg-white dark:bg-[#1A1A1A] border-2 border-dashed border-[#E5E5E5] dark:border-[#333333] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
             >
               <Upload
                 size={20}
@@ -313,7 +313,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting || formData.services.length === 0}
-          className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#6C5CE7] hover:bg-[#5B4BD6] disabled:bg-[#666666] text-white font-semibold text-lg rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2"
+          className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#22C55E] hover:bg-[#16A34A] disabled:bg-[#666666] text-white font-semibold text-lg rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2"
         >
           {isSubmitting ? (
             <>

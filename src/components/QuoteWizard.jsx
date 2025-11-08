@@ -229,7 +229,7 @@ export default function QuoteWizard() {
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors duration-200 ${
                   index <= currentStep
-                    ? "bg-[#6C5CE7] text-white"
+                    ? "bg-[#22C55E] text-white"
                     : "bg-[#E5E5E5] dark:bg-[#333333] text-[#666666] dark:text-[#B0B0B0]"
                 }`}
               >
@@ -239,7 +239,7 @@ export default function QuoteWizard() {
                 <div
                   className={`w-8 md:w-16 h-1 mx-2 transition-colors duration-200 ${
                     index < currentStep
-                      ? "bg-[#6C5CE7]"
+                      ? "bg-[#22C55E]"
                       : "bg-[#E5E5E5] dark:bg-[#333333]"
                   }`}
                 />
@@ -269,7 +269,7 @@ export default function QuoteWizard() {
                 type="text"
                 value={formData.company}
                 onChange={(e) => handleInputChange("company", e.target.value)}
-                className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
+                className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent"
                 placeholder="Your company name"
               />
             </div>
@@ -282,7 +282,7 @@ export default function QuoteWizard() {
                 {companyOptions.map((option) => (
                   <label
                     key={option}
-                    className="flex items-center gap-3 p-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+                    className="flex items-center gap-3 p-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
                   >
                     <input
                       type="radio"
@@ -292,7 +292,7 @@ export default function QuoteWizard() {
                       onChange={(e) =>
                         handleInputChange("companySize", e.target.value)
                       }
-                      className="w-4 h-4 text-[#6C5CE7] border-[#E5E5E5] dark:border-[#404040] focus:ring-[#6C5CE7] focus:ring-2"
+                      className="w-4 h-4 text-[#22C55E] border-[#E5E5E5] dark:border-[#404040] focus:ring-[#22C55E] focus:ring-2"
                     />
                     <span className="text-[#111111] dark:text-white">
                       {option}
@@ -309,7 +309,7 @@ export default function QuoteWizard() {
               <select
                 value={formData.industry}
                 onChange={(e) => handleInputChange("industry", e.target.value)}
-                className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
+                className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent"
               >
                 <option value="">Select your industry</option>
                 {industryOptions.map((option) => (
@@ -331,7 +331,7 @@ export default function QuoteWizard() {
               {goalOptions.map((goal) => (
                 <label
                   key={goal}
-                  className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+                  className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
                 >
                   <input
                     type="checkbox"
@@ -355,7 +355,7 @@ export default function QuoteWizard() {
               {timelineOptions.map((option) => (
                 <label
                   key={option}
-                  className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+                  className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
                 >
                   <input
                     type="radio"
@@ -385,7 +385,7 @@ export default function QuoteWizard() {
               {budgetOptions.map((option) => (
                 <label
                   key={option}
-                  className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+                  className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
                 >
                   <input
                     type="radio"
@@ -416,7 +416,7 @@ export default function QuoteWizard() {
                 {serviceOptions.map((service) => (
                   <label
                     key={service}
-                    className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#6C5CE7]/50 transition-colors duration-200"
+                    className="flex items-center gap-3 p-4 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl cursor-pointer hover:border-[#22C55E]/50 transition-colors duration-200"
                   >
                     <input
                       type="checkbox"
@@ -458,7 +458,7 @@ export default function QuoteWizard() {
                   onChange={(e) =>
                     handleInputChange("contactInfo.name", e.target.value)
                   }
-                  className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent"
                   placeholder="Your name"
                 />
               </div>
@@ -472,7 +472,7 @@ export default function QuoteWizard() {
                   onChange={(e) =>
                     handleInputChange("contactInfo.email", e.target.value)
                   }
-                  className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#2A2A2A] border border-[#E5E5E5] dark:border-[#404040] rounded-xl text-[#111111] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent"
                   placeholder="your@email.com"
                 />
               </div>
@@ -501,7 +501,7 @@ export default function QuoteWizard() {
               !formData.contactInfo.email ||
               isSubmitting
             }
-            className="flex items-center gap-2 px-8 py-3 bg-[#6C5CE7] hover:bg-[#5B4BD6] disabled:bg-[#666666] text-white font-semibold rounded-xl transition-colors duration-200"
+            className="flex items-center gap-2 px-8 py-3 bg-[#22C55E] hover:bg-[#16A34A] disabled:bg-[#666666] text-white font-semibold rounded-xl transition-colors duration-200"
           >
             {isSubmitting ? (
               <>
@@ -519,7 +519,7 @@ export default function QuoteWizard() {
           <button
             onClick={nextStep}
             disabled={!canProceed()}
-            className="flex items-center gap-2 px-6 py-3 bg-[#6C5CE7] hover:bg-[#5B4BD6] disabled:bg-[#666666] text-white font-medium rounded-xl transition-colors duration-200"
+            className="flex items-center gap-2 px-6 py-3 bg-[#22C55E] hover:bg-[#16A34A] disabled:bg-[#666666] text-white font-medium rounded-xl transition-colors duration-200"
           >
             <span>Next</span>
             <ChevronRight size={18} />

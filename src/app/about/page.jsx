@@ -87,7 +87,7 @@ export default function AboutPage() {
           <div className="max-w-[1000px] mx-auto text-center">
             <h1 className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-black dark:text-white mb-6 font-bold">
               Engineering growth with{" "}
-              <span className="text-[#6C5CE7]">intelligence</span>
+              <span className="text-[#22C55E]">intelligence</span>
             </h1>
             <p className="text-lg md:text-xl text-[#555555] dark:text-[#B0B0B0] max-w-[70ch] mx-auto mb-12 leading-relaxed">
               We're a cross-functional team of developers, ML engineers, and
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-[#666666] dark:text-[#B0B0B0] leading-relaxed">
                   <p>
-                    Kyntrio was born from a simple observation: most
+                    NeuraWeb Labs was born from a simple observation: most
                     businesses struggle to bridge the gap between cutting-edge
                     AI capabilities and practical business outcomes.
                   </p>
@@ -162,12 +162,12 @@ export default function AboutPage() {
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-8 border border-[#E5E5E5] dark:border-[#333333] hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
+                  className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-8 border border-[#E5E5E5] dark:border-[#333333] hover:border-[#22C55E] dark:hover:border-[#22C55E] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
                 >
-                  <div className="w-12 h-12 bg-[#6C5CE7]/10 dark:bg-[#6C5CE7]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#6C5CE7] transition-colors duration-300">
+                  <div className="w-12 h-12 bg-[#22C55E]/10 dark:bg-[#22C55E]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#22C55E] transition-colors duration-300">
                     <value.icon
                       size={24}
-                      className="text-[#6C5CE7] group-hover:text-white transition-colors duration-300"
+                      className="text-[#22C55E] group-hover:text-white transition-colors duration-300"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-[#111111] dark:text-white mb-4">
@@ -199,17 +199,17 @@ export default function AboutPage() {
               {team.map((member, index) => (
                 <div
                   key={index}
-                  className="bg-[#F8F9FA] dark:bg-[#1A1A1A] rounded-2xl p-8 border border-[#E5E5E5] dark:border-[#333333] hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-300 hover:shadow-lg"
+                  className="bg-[#F8F9FA] dark:bg-[#1A1A1A] rounded-2xl p-8 border border-[#E5E5E5] dark:border-[#333333] hover:border-[#22C55E] dark:hover:border-[#22C55E] transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#6C5CE7] to-[#00D1FF] rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#22C55E] to-[#00D1FF] rounded-2xl flex items-center justify-center flex-shrink-0">
                       <Users size={24} className="text-white" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-[#111111] dark:text-white mb-2">
                         {member.name}
                       </h3>
-                      <div className="text-[#6C5CE7] font-medium mb-2">
+                      <div className="text-[#22C55E] font-medium mb-2">
                         {member.role}
                       </div>
                       <div className="text-sm text-[#666666] dark:text-[#B0B0B0] mb-3">
@@ -230,7 +230,7 @@ export default function AboutPage() {
         <section className="py-16 md:py-24 px-6 bg-[#F8F9FA] dark:bg-[#111111]">
           <div className="max-w-[1000px] mx-auto text-center">
             <div className="bg-white dark:bg-[#1A1A1A] rounded-3xl p-8 md:p-12 border border-[#E5E5E5] dark:border-[#333333]">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#6C5CE7] to-[#00D1FF] rounded-2xl flex items-center justify-center mx-auto mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#22C55E] to-[#00D1FF] rounded-2xl flex items-center justify-center mx-auto mb-8">
                 <Brain size={32} className="text-white" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#111111] dark:text-white mb-6">
@@ -245,7 +245,7 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#6C5CE7] hover:bg-[#5B4BD6] text-white font-semibold text-lg rounded-2xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-lg rounded-2xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 group"
                 >
                   <span>Work With Us</span>
                   <ArrowRight
@@ -255,14 +255,14 @@ export default function AboutPage() {
                 </a>
                 <a
                   href="/services"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-[#E0E0E0] dark:border-[#333333] rounded-2xl hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-[#E0E0E0] dark:border-[#333333] rounded-2xl hover:border-[#22C55E] dark:hover:border-[#22C55E] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 group"
                 >
                   <span className="text-[#0D0D0D] dark:text-white font-semibold text-lg">
                     View Services
                   </span>
                   <ArrowRight
                     size={18}
-                    className="text-[#6C5CE7] group-hover:translate-x-1 transition-transform duration-200"
+                    className="text-[#22C55E] group-hover:translate-x-1 transition-transform duration-200"
                   />
                 </a>
               </div>

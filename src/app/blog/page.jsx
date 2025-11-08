@@ -1,8 +1,15 @@
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
 
-export default function BlogPage() {
+function BlogContent() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const blogPosts = [
     {
       title: "Building AI-Powered Attribution Models That Actually Work",
@@ -83,6 +90,14 @@ export default function BlogPage() {
     "SEO",
   ];
 
+  // Filter posts based on selected category
+  const filteredPosts = mounted && selectedCategory !== "All"
+    ? blogPosts.filter((post) => post.category === selectedCategory)
+    : blogPosts;
+
+  const featuredPosts = filteredPosts.filter((post) => post.featured);
+  const regularPosts = filteredPosts.filter((post) => !post.featured);
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#0B0B10]">
       <Header />
@@ -92,7 +107,7 @@ export default function BlogPage() {
         <section className="py-20 md:py-32 px-6 bg-gradient-to-b from-[#FEFEFE] to-[#F8F8F8] dark:from-[#0B0B10] dark:to-[#111111]">
           <div className="max-w-[1000px] mx-auto text-center">
             <h1 className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-black dark:text-white mb-6 font-bold">
-              <span className="text-[#6C5CE7]">Insights</span> & Playbooks
+              <span className="text-[#22C55E]">Insights</span> & Playbooks
             </h1>
             <p className="text-lg md:text-xl text-[#555555] dark:text-[#B0B0B0] max-w-[60ch] mx-auto mb-12 leading-relaxed">
               Playbooks on AI, marketing, and web engineering from our team
@@ -107,9 +122,10 @@ export default function BlogPage() {
               {categories.map((category) => (
                 <button
                   key={category}
-                  className={`px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 ${
-                    category === "All"
-                      ? "bg-[#6C5CE7] text-white"
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 ${
+                    category === selectedCategory
+                      ? "bg-[#22C55E] text-white"
                       : "bg-[#F8F9FA] dark:bg-[#1A1A1A] text-[#666666] dark:text-[#B0B0B0] hover:bg-[#E5E5E5] dark:hover:bg-[#333333] hover:text-[#111111] dark:hover:text-white"
                   }`}
                 >
@@ -123,21 +139,21 @@ export default function BlogPage() {
         {/* Featured Posts */}
         <section className="py-16 md:py-20 px-6 bg-white dark:bg-[#0B0B10]">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#111111] dark:text-white mb-12">
-              Featured Articles
-            </h2>
+            {featuredPosts.length > 0 && (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#111111] dark:text-white mb-12">
+                  Featured Articles
+                </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              {blogPosts
-                .filter((post) => post.featured)
-                .map((post, index) => (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                  {featuredPosts.map((post, index) => (
                   <article
                     key={post.slug}
-                    className="group bg-[#F8F9FA] dark:bg-[#1A1A1A] rounded-2xl overflow-hidden border border-[#E5E5E5] dark:border-[#333333] hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-300 hover:shadow-lg"
+                    className="group bg-[#F8F9FA] dark:bg-[#1A1A1A] rounded-2xl overflow-hidden border border-[#E5E5E5] dark:border-[#333333] hover:border-[#22C55E] dark:hover:border-[#22C55E] transition-all duration-300 hover:shadow-lg"
                   >
                     {/* Featured Badge */}
                     <div className="p-6 pb-0">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#6C5CE7] text-white text-xs font-semibold rounded-full mb-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#22C55E] text-white text-xs font-semibold rounded-full mb-4">
                         <Tag size={12} />
                         Featured
                       </div>
@@ -164,10 +180,10 @@ export default function BlogPage() {
                         </span>
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-bold text-[#111111] dark:text-white mb-3 group-hover:text-[#6C5CE7] transition-colors duration-200">
+                      <h3 className="text-xl md:text-2xl font-bold text-[#111111] dark:text-white mb-3 group-hover:text-[#22C55E] transition-colors duration-200">
                         <a
                           href={`/blog/${post.slug}`}
-                          className="focus:outline-none focus:text-[#6C5CE7]"
+                          className="focus:outline-none focus:text-[#22C55E]"
                         >
                           {post.title}
                         </a>
@@ -190,28 +206,30 @@ export default function BlogPage() {
 
                       <a
                         href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-2 text-[#6C5CE7] font-semibold hover:gap-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 rounded-lg px-2 py-1"
+                        className="inline-flex items-center gap-2 text-[#22C55E] font-semibold hover:gap-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 rounded-lg px-2 py-1"
                       >
                         <span>Read Article</span>
                         <ArrowRight size={16} />
                       </a>
                     </div>
                   </article>
-                ))}
-            </div>
+                  ))}
+                </div>
+              </>
+            )}
 
             {/* All Posts */}
-            <h2 className="text-2xl md:text-3xl font-bold text-[#111111] dark:text-white mb-12">
-              All Articles
-            </h2>
+            {regularPosts.length > 0 && (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#111111] dark:text-white mb-12">
+                  {featuredPosts.length > 0 ? "All Articles" : "Articles"}
+                </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts
-                .filter((post) => !post.featured)
-                .map((post, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {regularPosts.map((post, index) => (
                   <article
                     key={post.slug}
-                    className="group bg-[#F8F9FA] dark:bg-[#1A1A1A] rounded-2xl overflow-hidden border border-[#E5E5E5] dark:border-[#333333] hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-300 hover:shadow-lg"
+                    className="group bg-[#F8F9FA] dark:bg-[#1A1A1A] rounded-2xl overflow-hidden border border-[#E5E5E5] dark:border-[#333333] hover:border-[#22C55E] dark:hover:border-[#22C55E] transition-all duration-300 hover:shadow-lg"
                   >
                     <div className="p-6">
                       <div className="flex items-center gap-4 text-sm text-[#666666] dark:text-[#B0B0B0] mb-4">
@@ -235,10 +253,10 @@ export default function BlogPage() {
                         {post.category}
                       </span>
 
-                      <h3 className="text-lg md:text-xl font-bold text-[#111111] dark:text-white mb-3 group-hover:text-[#6C5CE7] transition-colors duration-200">
+                      <h3 className="text-lg md:text-xl font-bold text-[#111111] dark:text-white mb-3 group-hover:text-[#22C55E] transition-colors duration-200">
                         <a
                           href={`/blog/${post.slug}`}
-                          className="focus:outline-none focus:text-[#6C5CE7]"
+                          className="focus:outline-none focus:text-[#22C55E]"
                         >
                           {post.title}
                         </a>
@@ -266,15 +284,32 @@ export default function BlogPage() {
 
                       <a
                         href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-2 text-[#6C5CE7] font-semibold hover:gap-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 rounded-lg px-2 py-1"
+                        className="inline-flex items-center gap-2 text-[#22C55E] font-semibold hover:gap-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 rounded-lg px-2 py-1"
                       >
                         <span>Read More</span>
                         <ArrowRight size={16} />
                       </a>
                     </div>
                   </article>
-                ))}
-            </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* No Results Message */}
+            {filteredPosts.length === 0 && (
+              <div className="text-center py-16">
+                <p className="text-xl text-[#666666] dark:text-[#B0B0B0] mb-4">
+                  No articles found in this category
+                </p>
+                <button
+                  onClick={() => setSelectedCategory("All")}
+                  className="text-[#22C55E] hover:underline font-semibold"
+                >
+                  View all articles
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -294,7 +329,7 @@ export default function BlogPage() {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#333333] rounded-xl text-[#111111] dark:text-white placeholder-[#666666] dark:placeholder-[#B0B0B0] focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:border-transparent"
               />
-              <button className="px-6 py-3 bg-[#6C5CE7] hover:bg-[#5B4BD6] text-white font-semibold rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 flex items-center justify-center gap-2">
+              <button className="px-6 py-3 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 flex items-center justify-center gap-2">
                 <span>Subscribe</span>
                 <ArrowRight size={16} />
               </button>
@@ -306,4 +341,8 @@ export default function BlogPage() {
       <Footer />
     </div>
   );
+}
+
+export default function BlogPage() {
+  return <BlogContent />;
 }

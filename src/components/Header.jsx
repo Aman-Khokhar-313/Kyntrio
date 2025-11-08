@@ -7,38 +7,28 @@ export default function Header() {
 
   const menuItems = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "/services", hasDropdown: true, badge: "3" },
-    { name: "Portfolio", href: "/portfolio", hasDropdown: true },
+    { name: "Services", href: "/services", hasDropdown: true },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
-  const exploreLinks = [
-    { icon: "✨", name: "Home", href: "/" },
-    { icon: "⚡", name: "Services", href: "/services" },
-    { icon: "📝", name: "Blog", href: "/blog" },
-    { icon: "ℹ️", name: "About", href: "/about" },
-    { icon: "📧", name: "Contact", href: "/contact" },
+  const servicesMenuItems = [
+    { icon: "🤖", name: "AI Automation", description: "Intelligent workflows & automation", href: "/services/ai-automation" },
+    { icon: "🧠", name: "AI/ML Projects", description: "Custom AI solutions", href: "/services/ai-ml" },
+    { icon: "💻", name: "Software Development", description: "Web apps & dashboards", href: "/services/software-development" },
+    { icon: "🎨", name: "Web Design", description: "Conversion-first design", href: "/services/web-design" },
+    { icon: "🔍", name: "SEO", description: "Technical SEO & optimization", href: "/services/seo" },
+    { icon: "📊", name: "Data Pipelines", description: "ML architecture & data ops", href: "/services/ml-architecture" },
   ];
 
-  const resourcesLinks = [
-    { icon: "✨", name: "Quote", subtitle: "AI Solutions", href: "/quote" },
-    { icon: "🎯", name: "Get", subtitle: "Get Insights", href: "/services" },
-    { icon: "⚡", name: "Quote", subtitle: "Automation", href: "/quote" },
-  ];
-
-  const featuredContent = [
-    {
-      image: "🚀",
-      title: "Accelerate Growth",
-      subtitle: "Web Development",
-      gradient: "from-indigo-600 to-purple-600",
-    },
-    {
-      image: "📊",
-      title: "AI Transformations",
-      subtitle: "Marketing Insights",
-      gradient: "from-blue-600 to-cyan-500",
-    },
-  ];
+  const featuredService = {
+    title: "Not sure where to start?",
+    description: "Get a free consultation and discover how AI can transform your business.",
+    buttonText: "Schedule Call",
+    href: "/contact",
+  };
 
   return (
     <>
@@ -49,17 +39,17 @@ export default function Header() {
       />
 
       <header
-        className="bg-[#0A0A0A] h-16 md:h-16 px-6 border-b border-[#1F1F23]"
+        className="sticky top-0 z-50 bg-[#0B0B10]/80 backdrop-blur-xl h-16 md:h-16 px-6 border-b border-white/10"
         style={{ fontFamily: "Inter, system-ui, sans-serif" }}
       >
         <div className="max-w-[1400px] mx-auto flex items-center justify-between h-full">
           {/* Logo block */}
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6C5CE7] to-[#00D1FF] flex items-center justify-center">
-              <span className="text-white font-bold text-sm">K</span>
+              <span className="text-white font-bold text-sm">N</span>
             </div>
             <span className="text-white font-bold text-lg">
-              Kyntrio
+              NeuraWeb Labs
             </span>
           </div>
 
@@ -77,11 +67,6 @@ export default function Header() {
                   className="text-white/90 hover:text-white transition-colors duration-150 font-medium text-[15px] px-4 py-2 flex items-center gap-1.5 rounded-lg hover:bg-white/5"
                 >
                   <span>{item.name}</span>
-                  {item.badge && (
-                    <span className="bg-white text-black text-xs font-bold px-1.5 py-0.5 rounded">
-                      {item.badge}
-                    </span>
-                  )}
                   {item.hasDropdown && (
                     <ChevronDown
                       size={14}
@@ -97,81 +82,44 @@ export default function Header() {
                   <>
                     {/* Invisible bridge to prevent dropdown from closing */}
                     <div className="absolute top-full left-0 w-full h-2" />
-                    <div className="absolute top-full left-0 mt-2 w-[750px] bg-[#0F0F0F] rounded-2xl shadow-2xl border border-[#252525] overflow-hidden z-50">
-                    <div className="grid grid-cols-[200px_200px_1fr] p-6 gap-6">
-                      {/* Explore Column */}
-                      <div>
-                        <h3 className="text-[#666666] text-xs font-semibold mb-4 uppercase tracking-wider">
-                          Explore
-                        </h3>
-                        <div className="space-y-1">
-                          {exploreLinks.map((link) => (
+                    <div className="absolute top-full left-0 mt-2 w-[850px] bg-[#0F0F0F] rounded-2xl shadow-2xl border border-[#252525] overflow-hidden z-50">
+                      <div className="p-8">
+                        <h3 className="text-white text-lg font-semibold mb-6">Our Services</h3>
+                        <div className="grid grid-cols-3 gap-4">
+                          {servicesMenuItems.map((service) => (
                             <a
-                              key={link.name}
-                              href={link.href}
-                              className="flex items-center gap-2.5 text-white/80 hover:text-white transition-colors duration-150 py-2 px-2.5 rounded-lg hover:bg-white/5 group text-[14px]"
+                              key={service.name}
+                              href={service.href}
+                              className="group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-200"
                             >
-                              <span className="text-base opacity-60">{link.icon}</span>
-                              <span className="font-normal">{link.name}</span>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Resources Column */}
-                      <div>
-                        <h3 className="text-[#666666] text-xs font-semibold mb-4 uppercase tracking-wider">
-                          Resources
-                        </h3>
-                        <div className="space-y-1">
-                          {resourcesLinks.map((link, idx) => (
-                            <a
-                              key={idx}
-                              href={link.href}
-                              className="block py-2 px-2.5 rounded-lg hover:bg-white/5 group transition-colors duration-150"
-                            >
-                              <div className="flex items-center gap-2.5">
-                                <span className="text-base opacity-60">{link.icon}</span>
-                                <div>
-                                  <div className="text-white/80 group-hover:text-white font-normal text-[14px] transition-colors">
-                                    {link.name}
-                                  </div>
-                                  <div className="text-[#666666] text-xs font-normal">
-                                    {link.subtitle}
-                                  </div>
-                                </div>
+                              <div className="text-2xl mb-3">{service.icon}</div>
+                              <div className="text-white font-semibold text-sm mb-1 group-hover:text-[#22C55E] transition-colors">
+                                {service.name}
+                              </div>
+                              <div className="text-white/60 text-xs">
+                                {service.description}
                               </div>
                             </a>
                           ))}
                         </div>
-                      </div>
-
-                      {/* Featured Content Column */}
-                      <div className="space-y-3">
-                        {featuredContent.map((content, idx) => (
-                          <div
-                            key={idx}
-                            className="bg-[#1A1A1A] rounded-xl p-3.5 hover:bg-[#1F1F1F] transition-all duration-200 cursor-pointer group border border-[#252525] hover:border-[#333333]"
-                          >
-                            <div className="flex items-center gap-3">
-                              <div
-                                className={`w-12 h-12 rounded-lg bg-gradient-to-br ${content.gradient} flex items-center justify-center text-xl flex-shrink-0 shadow-lg`}
-                              >
-                                {content.image}
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="text-white font-semibold text-[13px] mb-0.5">
-                                  {content.title}
-                                </div>
-                                <div className="text-[#888888] text-[12px] font-normal">
-                                  {content.subtitle}
-                                </div>
-                              </div>
+                        <div className="mt-6 pt-6 border-t border-white/10">
+                          <div className="bg-gradient-to-br from-[#22C55E]/10 to-transparent border border-[#22C55E]/20 rounded-xl p-4">
+                            <div className="text-white font-semibold text-sm mb-1">
+                              {featuredService.title}
                             </div>
+                            <div className="text-white/60 text-xs mb-3">
+                              {featuredService.description}
+                            </div>
+                            <a
+                              href={featuredService.href}
+                              className="inline-flex items-center gap-2 text-[#22C55E] text-sm font-medium hover:gap-3 transition-all"
+                            >
+                              {featuredService.buttonText}
+                              <ArrowRight size={14} />
+                            </a>
                           </div>
-                        ))}
+                        </div>
                       </div>
-                    </div>
                     </div>
                   </>
                 )}
@@ -182,17 +130,16 @@ export default function Header() {
           {/* Desktop Action Buttons */}
           <div className="hidden md:flex items-center space-x-3">
             <a
-              href="/services"
-              className="text-white/90 hover:text-white font-medium text-[15px] px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-150 flex items-center gap-2"
+              href="/contact"
+              className="text-white/90 hover:text-white font-medium text-[15px] px-5 py-2.5 rounded-lg border border-white/20 hover:bg-white/5 transition-all duration-150 flex items-center gap-2"
             >
-              <span>Learn More</span>
-              <ArrowRight size={16} />
+              <span>Request Info</span>
             </a>
             <a
               href="/quote"
-              className="px-5 py-2.5 rounded-lg bg-teal-500 hover:bg-teal-600 text-white font-semibold text-[14px] transition-all duration-150 shadow-lg shadow-teal-500/20 flex items-center gap-2"
+              className="px-5 py-2.5 rounded-lg bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-[14px] transition-all duration-150 shadow-lg shadow-[#22C55E]/20 flex items-center gap-2"
             >
-              <span>Get Started</span>
+              <span>Start Now</span>
               <ArrowRight size={16} />
             </a>
           </div>
@@ -214,10 +161,10 @@ export default function Header() {
             <div className="flex items-center justify-between h-16 px-6 border-b border-[#1F1F23]">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6C5CE7] to-[#00D1FF] flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">K</span>
+                  <span className="text-white font-bold text-sm">N</span>
                 </div>
                 <span className="text-white font-bold text-lg">
-                  Kyntrio
+                  NeuraWeb Labs
                 </span>
               </div>
               <button
@@ -251,19 +198,18 @@ export default function Header() {
             {/* Mobile Action Buttons */}
             <div className="px-6 py-6 space-y-3 border-t border-[#1F1F23]">
               <a
-                href="/services"
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-white font-medium text-sm hover:bg-white/5 transition-all duration-150"
+                href="/contact"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-white/20 text-white font-medium text-sm hover:bg-white/5 transition-all duration-150"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>Learn More</span>
-                <ArrowRight size={16} />
+                <span>Request Info</span>
               </a>
               <a
                 href="/quote"
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-teal-500 hover:bg-teal-600 text-white font-semibold text-sm transition-all duration-150"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-sm transition-all duration-150"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>Get Started</span>
+                <span>Start Now</span>
                 <ArrowRight size={16} />
               </a>
             </div>

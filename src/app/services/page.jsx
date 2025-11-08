@@ -57,7 +57,7 @@ export default function ServicesPage() {
         <section className="py-20 md:py-32 px-6 bg-gradient-to-b from-[#FEFEFE] to-[#F8F8F8] dark:from-[#0B0B10] dark:to-[#111111]">
           <div className="max-w-[1000px] mx-auto text-center">
             <h1 className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-black dark:text-white mb-6 font-bold">
-              Our <span className="text-[#6C5CE7]">Services</span>
+              Our <span className="text-[#22C55E]">Services</span>
             </h1>
             <p className="text-lg md:text-xl text-[#555555] dark:text-[#B0B0B0] max-w-[60ch] mx-auto mb-12 leading-relaxed">
               Choose modular plans or a full-stack engagement
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                         </div>
                       </td>
                       <td className="py-6 px-6">
-                        <div className="font-semibold text-[#6C5CE7] text-lg">
+                        <div className="font-semibold text-[#22C55E] text-lg">
                           {service.price}
                         </div>
                       </td>
@@ -147,7 +147,7 @@ export default function ServicesPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="text-[#6C5CE7] font-semibold text-xl">
+                  <div className="text-[#22C55E] font-semibold text-xl">
                     Starting from {service.price}
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <a
                 href="/quote"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#6C5CE7] hover:bg-[#5B4BD6] text-white font-semibold text-lg rounded-2xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-lg rounded-2xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 group"
               >
                 <span>Get Custom Quote</span>
                 <ArrowRight
@@ -179,14 +179,14 @@ export default function ServicesPage() {
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-[#1A1A1A] border border-[#E0E0E0] dark:border-[#333333] rounded-2xl hover:border-[#6C5CE7] dark:hover:border-[#6C5CE7] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-[#1A1A1A] border border-[#E0E0E0] dark:border-[#333333] rounded-2xl hover:border-[#22C55E] dark:hover:border-[#22C55E] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 group"
               >
                 <span className="text-[#0D0D0D] dark:text-white font-semibold text-lg">
                   Book a Call
                 </span>
                 <ArrowRight
                   size={18}
-                  className="text-[#6C5CE7] group-hover:translate-x-1 transition-transform duration-200"
+                  className="text-[#22C55E] group-hover:translate-x-1 transition-transform duration-200"
                 />
               </a>
             </div>

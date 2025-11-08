@@ -13,7 +13,7 @@ export default function ContactPage() {
         <section className="py-20 md:py-32 px-6 bg-gradient-to-b from-[#FEFEFE] to-[#F8F8F8] dark:from-[#0B0B10] dark:to-[#111111]">
           <div className="max-w-[1000px] mx-auto text-center">
             <h1 className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-black dark:text-white mb-6 font-bold">
-              Tell us about your <span className="text-[#6C5CE7]">project</span>
+              Tell us about your <span className="text-[#22C55E]">project</span>
             </h1>
             <p className="text-lg md:text-xl text-[#555555] dark:text-[#B0B0B0] max-w-[60ch] mx-auto mb-12 leading-relaxed">
               We reply within 24 hours
@@ -39,8 +39,8 @@ export default function ContactPage() {
 
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-[#6C5CE7]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Mail size={20} className="text-[#6C5CE7]" />
+                      <div className="w-12 h-12 bg-[#22C55E]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Mail size={20} className="text-[#22C55E]" />
                       </div>
                       <div>
                         <h4 className="font-semibold text-[#111111] dark:text-white mb-1">
@@ -127,7 +127,7 @@ export default function ContactPage() {
             </p>
             <a
               href="/quote"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#6C5CE7] hover:bg-[#5B4BD6] text-white font-semibold text-lg rounded-2xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] focus:ring-offset-2 group"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-lg rounded-2xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 group"
             >
               <span>Start Quote Wizard</span>
               <ArrowRight

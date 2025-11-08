@@ -12,7 +12,7 @@ export default function QuotePage() {
         <section className="py-20 md:py-32 px-6 bg-gradient-to-b from-[#FEFEFE] to-[#F8F8F8] dark:from-[#0B0B10] dark:to-[#111111]">
           <div className="max-w-[1000px] mx-auto text-center">
             <h1 className="text-4xl md:text-[56px] leading-tight md:leading-[1.1] text-black dark:text-white mb-6 font-bold">
-              Get a <span className="text-[#6C5CE7]">Quote</span>
+              Get a <span className="text-[#22C55E]">Quote</span>
             </h1>
             <p className="text-lg md:text-xl text-[#555555] dark:text-[#B0B0B0] max-w-[60ch] mx-auto mb-12 leading-relaxed">
               Instant project scoping with transparent pricing
